@@ -16,7 +16,8 @@ def get_state_graph(
     final_state: Optional[str] = None,
     nodes: Optional[List[str]] = None,
     name: str = 'output.png',
-    draw: bool = True
+    draw: bool = True,
+    engine: str = 'circo',
 ) -> gv.AGraph:
     '''
     From a transition dictionary, creates a pygraphviz graph
@@ -24,7 +25,7 @@ def get_state_graph(
 
     Returns the resulting graph.
     '''
-    graph = gv.AGraph(directed=True, strict=False)
+    graph = gv.AGraph(directed=True, strict=False, ranksep='1')
     key_num = it.count()
     if nodes is not None:
         graph.add_nodes_from(nodes)
@@ -52,7 +53,7 @@ def get_state_graph(
         n.attr['style'] = 'filled'
 
     if draw:
-        graph.layout(prog='dot')
+        graph.layout(prog=engine)
         graph.draw(name)
 
     return graph
@@ -84,6 +85,7 @@ def render_string_graph(
     transitions: TransitionsTable,
     name: str = 'output.png',
     draw: bool = True,
+    engine: str = 'circo'
 ):
     '''
     Given a string, a start state, an end state, end a
@@ -121,7 +123,7 @@ def render_string_graph(
         current_node.attr['fillcolor'] = '#00FF00'
 
     if draw:
-        graph.layout(prog='dot')
+        graph.layout(prog=engine)
         graph.draw(name)
 
     return graph

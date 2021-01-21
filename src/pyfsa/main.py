@@ -31,6 +31,13 @@ def main():
     type=str,
     help='The end state. Cannot be the same as start state.'
 )
+@click.option(
+    '-g',
+    '--engine',
+    type=click.Choice(['dot', 'neato', 'fdp', 'sfdp', 'twopi', 'circo']),
+    default='circo',
+    help='The rendering engine to use. Switching to different ones might give different layouts'
+)
 @click.argument(
     'output_file',
     type=str,
@@ -41,6 +48,7 @@ def state(
     start: str,
     end: str,
     output_file: str,
+    engine: str,
 ):
     '''
     Renders finite state automata graphs from csv files.
@@ -60,7 +68,8 @@ def state(
         transitions,
         start_state=start,
         final_state=end,
-        name=name
+        name=name,
+        engine=engine,
     )
     click.secho('DONE', bg='green')
 
@@ -94,6 +103,13 @@ def state(
     type=str,
     required=False,
 )
+@click.option(
+    '-g',
+    '--engine',
+    type=click.Choice(['dot', 'neato', 'fdp', 'sfdp', 'twopi', 'circo']),
+    default='circo',
+    help='The rendering engine to use. Switching to different ones might give different layouts'
+)
 @click.argument(
     'string',
     type=str,
@@ -105,6 +121,7 @@ def string(
     end: str,
     output: str,
     string: str,
+    engine: str
 ):
     '''
     Verifies that the provided string is valid given a
@@ -124,7 +141,8 @@ def string(
             start,
             end,
             transitions,
-            output
+            output,
+            engine=engine,
         )
 
     if fsa.verify_string(

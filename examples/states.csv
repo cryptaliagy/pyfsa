@@ -1,0 +1,7 @@
+trigger,source,target
+a,x,y
+b,x,z
+a,y,x
+b,y,z
+a,z,z
+b,z,z

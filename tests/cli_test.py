@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pytest
 import unittest.mock as mock
 import pathlib as plb

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import click
 
 import pyfsa.lib.csv_convert as csv

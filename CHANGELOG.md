@@ -42,5 +42,3 @@
 ### Other
 
 * Initial commit. [Natalia Maximo]
-
-

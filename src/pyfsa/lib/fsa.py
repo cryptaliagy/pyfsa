@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pygraphviz as gv  # type: ignore
 import itertools as it
 
@@ -42,12 +43,12 @@ def get_state_graph(
 
     if start_state:
         n: gv.Node = graph.get_node(start_state)
-        n.attr['color'] = "#0000FF"
+        n.attr['color'] = '#0000FF'
         n.attr['style'] = 'filled'
 
     if final_state:
         n = graph.get_node(final_state)
-        n.attr['color'] = "#00FF00"
+        n.attr['color'] = '#00FF00'
         n.attr['style'] = 'filled'
 
     if draw:

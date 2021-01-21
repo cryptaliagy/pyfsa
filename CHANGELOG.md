@@ -1,7 +1,20 @@
 # Changelog
 
 
-## 0.2.1
+## 0.3
+
+### New
+
+* Pre-commit hooks for the project. [Natalia Maximo]
+
+### Changes
+
+* Added engine selection optionfor rendered graphs. [Natalia Maximo]
+
+* Added more install information instructions. [Natalia Maximo]
+
+
+## 0.2.1 (2021-01-21)
 
 ### Changes
 
@@ -42,3 +55,5 @@
 ### Other
 
 * Initial commit. [Natalia Maximo]
+
+

@@ -16,14 +16,17 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
+      - name: Install graphviz and needed libraries
+        run: sudo apt-get install graphviz libgraphviz-dev
+
       - name: Install dependencies and script
         run: pip install .[tests]
-      
+
       - name: Lint with flake8
         run: flake8
-      
+
       - name: Run static type analyzer
         run: mypy
-      
+
       - name: Test with pytest
         run: pytest tests/

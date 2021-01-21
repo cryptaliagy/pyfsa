@@ -3,7 +3,7 @@ name: release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   version-check:
@@ -32,8 +32,8 @@ jobs:
       matrix:
         python: ['3.6', '3.7', '3.8', '3.9']
         os: [ubuntu-latest, windows-latest, macos-latest]
-    name: Testing krait with python ${{ matrix.python }}
-    if: ${{ needs.version-check.outputs.run_deploy == 'yes' && github.ref == 'refs/heads/master' }}
+    name: Testing pyfsa with python ${{ matrix.python }}
+    if: ${{ needs.version-check.outputs.run_deploy == 'yes' && github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup python
@@ -53,30 +53,6 @@ jobs:
       - name: Test with pytest
         run: pytest
 
-      - name: Ensure config directory is clean
-        run: krait reset
-
-      - name: Create new krait click project
-        run: krait --skip-config create -n 'name' -e 'email' -s project
-
-      - name: Install & test newly created project
-        run: |
-          cd project
-          pip install -e .[tests]
-          project --help
-          pytest
-
-      - name: Return to parent directory
-        run: cd ..
-
-      - name: Create new krait lib project
-        run: krait create -n 'name' -e 'email' -p library -s lib-project
-
-      - name: Install & test newly created project
-        run: |
-          cd project
-          pip install -e .[tests]
-          pytest
   release:
     needs: build
     runs-on: ubuntu-latest
@@ -127,7 +103,7 @@ jobs:
           message: '!gitchangelog'
 
       - name: Generate version changelog for release
-        run: gitchangelog $previous_tag..HEAD | sed "s/## (unreleased)/Krait v$(cat VERSION)/" > version_changelog.md
+        run: gitchangelog $previous_tag..HEAD | sed "s/## (unreleased)/PyFSA v$(cat VERSION)/" > version_changelog.md
 
       - name:  Create Github release & upload files
         env:

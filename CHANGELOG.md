@@ -1,7 +1,14 @@
 # Changelog
 
 
-## 0.2
+## 0.2.1
+
+### Changes
+
+* Updated readme with install instructions. [Natalia Maximo]
+
+
+## 0.2 (2021-01-21)
 
 ### New
 

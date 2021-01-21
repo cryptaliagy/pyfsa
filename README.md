@@ -13,7 +13,15 @@ A python CLI to render finite state graphs.
 
 This application takes a CSV file with state information, and uses it to either produce the finite state graph, and verify that strings are valid given the state information, a start state, and a desired state. The `string` subcommand is also able to render the traversal graph of a string through the state machine.
 
-Examples:
+## Installation
+You can install this project directly from github with `pip`, but it is also available in `pypi`. Install it like so:
+
+```bash
+python3 -m pip install pyfsa
+```
+
+
+## Examples
 
 State file:
 ```csv

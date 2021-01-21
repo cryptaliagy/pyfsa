@@ -1,4 +1,4 @@
-import pygraphviz as gv
+import pygraphviz as gv  # type: ignore
 import itertools as it
 
 from typing import (

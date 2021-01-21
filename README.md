@@ -20,6 +20,14 @@ You can install this project directly from github with `pip`, but it is also ava
 python3 -m pip install pyfsa
 ```
 
+GraphViz is required to run this, as graphviz is the rendering engine used to create the png files. You can find lots of information on how to do that here: https://graphviz.org/download/
+
+You might need to also install the library that it provides. For example, on ubuntu, you also need to run the following command to ensure that `pygraphviz` runs properly. You can find more information on installing that package on their [website](https://pygraphviz.github.io)
+
+```bash
+$ apt install libgraphviz-dev
+```
+
 
 ## Examples
 

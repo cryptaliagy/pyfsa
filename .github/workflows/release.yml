@@ -27,11 +27,10 @@ jobs:
 
   build:
     needs: version-check
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python: ['3.6', '3.7', '3.8', '3.9']
-        os: [ubuntu-latest, windows-latest, macos-latest]
     name: Testing pyfsa with python ${{ matrix.python }}
     if: ${{ needs.version-check.outputs.run_deploy == 'yes' && github.ref == 'refs/heads/main' }}
     steps:
@@ -40,6 +39,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python }}
+
+      - name: Install graphviz and needed libraries
+        run: sudo apt-get install graphviz libgraphviz-dev
 
       - name: Install dependencies
         run: pip install .[tests]

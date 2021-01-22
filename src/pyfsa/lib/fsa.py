@@ -12,8 +12,8 @@ from pyfsa.lib.types import TransitionsTable
 
 def get_state_graph(
     transitions: TransitionsTable,
-    start_state: Optional[str] = None,
-    final_state: Optional[str] = None,
+    start: Optional[str] = None,
+    end: Optional[str] = None,
     nodes: Optional[List[str]] = None,
     name: str = 'output.png',
     draw: bool = True,
@@ -42,13 +42,13 @@ def get_state_graph(
                 weight=1,
             )
 
-    if start_state:
-        n: gv.Node = graph.get_node(start_state)
+    if start:
+        n: gv.Node = graph.get_node(start)
         n.attr['color'] = '#0000FF'
         n.attr['style'] = 'filled'
 
-    if final_state:
-        n = graph.get_node(final_state)
+    if end:
+        n = graph.get_node(end)
         n.attr['color'] = '#00FF00'
         n.attr['style'] = 'filled'
 
@@ -80,8 +80,8 @@ def verify_string(
 
 def render_string_graph(
     string: str,
-    starting_state: str,
-    final_state: str,
+    start: str,
+    end: str,
     transitions: TransitionsTable,
     name: str = 'output.png',
     draw: bool = True,
@@ -100,7 +100,7 @@ def render_string_graph(
     graph.graph_attr['label'] = f'Evaluating {string}'
 
     node_names = it.count()
-    current_state = starting_state
+    current_state = start
     node_name = next(node_names)
     graph.add_node(node_name)
     current_node = gv.Node(graph, node_name)
@@ -118,7 +118,7 @@ def render_string_graph(
         current_node = next_node
         current_state = next_state
 
-    if current_state == final_state:
+    if current_state == end:
         current_node.attr['style'] = 'filled'
         current_node.attr['fillcolor'] = '#00FF00'
 

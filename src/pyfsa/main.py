@@ -66,8 +66,8 @@ def state(
     click.echo('Rendering state graph... ', nl=False)
     fsa.get_state_graph(
         transitions,
-        start_state=start,
-        final_state=end,
+        start=start,
+        end=end,
         name=name,
         engine=engine,
     )

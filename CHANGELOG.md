@@ -1,7 +1,14 @@
 # Changelog
 
 
-## 0.3.1
+## 0.3.2
+
+### New
+
+* Changed library api to use smaller names. [Natalia Maximo]
+
+
+## 0.3.1 (2021-01-22)
 
 ### Changes
 

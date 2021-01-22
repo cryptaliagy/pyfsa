@@ -1,7 +1,16 @@
 # Changelog
 
 
-## 0.3
+## 0.3.1
+
+### Changes
+
+* Factored out rows to transitions code. [Natalia Maximo]
+
+* Use foreground colour on output instead of background. [Natalia Maximo]
+
+
+## 0.3 (2021-01-21)
 
 ### New
 

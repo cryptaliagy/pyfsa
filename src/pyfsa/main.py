@@ -71,7 +71,7 @@ def state(
         name=name,
         engine=engine,
     )
-    click.secho('DONE', bg='green')
+    click.secho('DONE', fg='green')
 
 
 @main.command()

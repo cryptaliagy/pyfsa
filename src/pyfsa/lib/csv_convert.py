@@ -21,18 +21,26 @@ def convert_csv_file(file_name: str) -> TransitionsTable:
     if not file_path.exists():
         return {}
 
-    output: TransitionsTable = defaultdict(lambda: {})
-
     with file_path.open() as f:
         reader = csv.DictReader(f)
 
-        for row in reader:
-            source = row['source']
-            trigger = row['trigger']
-            target = row['target']
+        return rows_to_transitions(reader)
 
-            src_dict = output[source]
-            src_dict[trigger] = target
+
+def rows_to_transitions(transition_data):
+    '''
+    Converts an iterable of dictionaries into a transitions table
+    '''
+    output: TransitionsTable = defaultdict(lambda: {})
+    row: Dict[str, str]
+
+    for row in transition_data:
+        source = row['source']
+        trigger = row['trigger']
+        target = row['target']
+
+        src_dict = output[source]
+        src_dict[trigger] = target
 
     return output
 

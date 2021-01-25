@@ -33,14 +33,15 @@ def get_state_graph(
         graph.add_nodes_from(transitions.keys())
 
     for node, transition_row in transitions.items():
-        for label, target in transition_row.items():
-            graph.add_edge(
-                node,
-                target,
-                key=f'{node}{target}{label}{next(key_num)}',
-                label=label,
-                weight=1,
-            )
+        for label, targets in transition_row.items():
+            for target in targets:
+                graph.add_edge(
+                    node,
+                    target,
+                    key=f'{next(key_num)}',
+                    label=label,
+                    weight=1,
+                )
 
     if start:
         n: gv.Node = graph.get_node(start)
@@ -73,7 +74,7 @@ def verify_string(
     current_state = starting_state
     for letter in string:
         transition = transitions[current_state]
-        current_state = transition[letter]
+        current_state = transition[letter][0]
 
     return current_state == final_state
 
@@ -112,7 +113,10 @@ def render_string_graph(
         node_name = next(node_names)
         graph.add_node(node_name)
         next_node = gv.Node(graph, node_name)
-        next_state = transitions[current_state][letter]
+        # TODO: The algorithm prioritizes just the first
+        # found state, which may not produce a correct
+        # answer. Needs to fix this
+        next_state = transitions[current_state][letter][0]
         next_node.attr['label'] = next_state
         graph.add_edge(current_node, next_node, label=letter)
         current_node = next_node

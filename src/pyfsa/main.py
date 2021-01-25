@@ -8,6 +8,12 @@ import pyfsa.lib.fsa as fsa
 @click.group()
 @click.version_option()
 def main():
+    '''
+    A CLI application for generating state transition graphs!
+
+    Currently the 'string' subcommand is disabled since we now allow for
+    multiple states per given transition trigger.
+    '''
     pass
 
 
@@ -74,7 +80,11 @@ def state(
     click.secho('DONE', fg='green')
 
 
-@main.command()
+# Disabling the string command until I have a better algorithm
+# for dealing with verifying strings, since when there's multiple
+# possible states per transition it doesn't necessarily have
+# a single path
+# @main.command()
 @click.option(
     '-f',
     '--file',

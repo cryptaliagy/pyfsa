@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
-from typing import Dict
+from typing import (
+    Dict,
+    List
+)
 
-TransitionsTable = Dict[str, Dict[str, str]]
+TransitionsTable = Dict[str, Dict[str, List[str]]]

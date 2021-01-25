@@ -31,7 +31,9 @@ def rows_to_transitions(transition_data):
     '''
     Converts an iterable of dictionaries into a transitions table
     '''
-    output: TransitionsTable = defaultdict(lambda: {})
+    output: TransitionsTable = defaultdict(
+        lambda: defaultdict(lambda: [])
+    )
     row: Dict[str, str]
 
     for row in transition_data:
@@ -40,7 +42,7 @@ def rows_to_transitions(transition_data):
         target = row['target']
 
         src_dict = output[source]
-        src_dict[trigger] = target
+        src_dict[trigger].append(target)
 
     return output
 
@@ -58,12 +60,13 @@ def convert_transitions(
     output = []
 
     for source in transitions.keys():
-        for trigger, target in transitions[source].items():
-            output.append({
-                'trigger': trigger,
-                'source': source,
-                'target': target
-            })
+        for trigger, targets in transitions[source].items():
+            for target in targets:
+                output.append({
+                    'trigger': trigger,
+                    'source': source,
+                    'target': target
+                })
 
     return output
 

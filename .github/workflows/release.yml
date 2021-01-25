@@ -72,11 +72,14 @@ jobs:
           python-version: '3.9'
 
       - name: Install release packages
-        run: pip install wheel gitchangelog pystache
+        run: pip install wheel gitchangelog pystache mypy
 
       - name: Ensure clean dist/ and build/ folders
         run: rm -rf dist build
         continue-on-error: true
+
+      - name: Create stubs for the files
+        run: stubgen src -o src
 
       - name: Build release
         run: python setup.py sdist bdist_wheel

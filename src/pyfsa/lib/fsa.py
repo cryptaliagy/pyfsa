@@ -87,7 +87,7 @@ def render_string_graph(
     name: str = 'output.png',
     draw: bool = True,
     engine: str = 'circo'
-):
+) -> gv.AGraph:
     '''
     Given a string, a start state, an end state, end a
     transitions table, produces the graph resulting in

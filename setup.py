@@ -18,6 +18,9 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     include_package_data=True,
+    package_data={
+        'pyfsa': ['py.typed']
+    },
     python_requires='>=3.6',
     license='Apache Software License',
     install_requires=[
@@ -31,6 +34,7 @@ setup(
     entry_points={
         'console_scripts': ['fsa = pyfsa.main:main']
     },
+    zip_safe=False,
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',

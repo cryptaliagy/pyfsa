@@ -1,7 +1,14 @@
 # Changelog
 
 
-## 0.3.2
+## 0.4
+
+### Changes
+
+* Allow a transition to have more than one target state. [Natalia Maximo]
+
+
+## 0.3.2 (2021-01-22)
 
 ### New
 

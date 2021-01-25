@@ -1,7 +1,22 @@
 # Changelog
 
 
-## 0.4
+## 0.4.1
+
+### Changes
+
+* Type information for package distribution. [Natalia Maximo]
+
+### Other
+
+* Merge pull request #2 from weshowe/main. [Natalia Maximo]
+
+  Updated installation instructions.
+
+* Updated installation instructions. [icarus]
+
+
+## 0.4 (2021-01-25)
 
 ### Changes
 
